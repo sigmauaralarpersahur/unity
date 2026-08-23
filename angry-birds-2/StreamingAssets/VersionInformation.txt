@@ -1,0 +1,26 @@
+{
+	"LatestVersion": "2.9.0",
+	"ScheduledReleaseDates": 
+		[
+			{
+				"Date": "2000-01-01T00:00",
+				"NewTotalNumExistingLevels": 760,
+				"NewHighestCardLevel": 16
+			},
+			{
+				"Date": "2016-09-22T13:00",
+				"NewTotalNumExistingLevels": 780,
+				"NewHighestCardLevel": 17
+			},
+			{
+				"Date": "2016-10-06T13:00",
+				"NewTotalNumExistingLevels": 800,
+				"NewHighestCardLevel": 18
+			},
+			{
+				"Date": "2016-10-20T13:00",
+				"NewTotalNumExistingLevels": 820,
+				"NewHighestCardLevel": 19
+			}
+		]
+}

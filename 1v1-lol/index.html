@@ -1,0 +1,93 @@
+<!-- Ported by Martin_MMC -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <base href="https://gcore.jsdelivr.net/gh/marty-games/mga-unityx@main/1v1-lol/">
+    <meta charset="utf-8">
+    <title>1v1.LOL</title>
+
+    <!-- Unity scripts -->
+    <script src="UnityProgress.js"></script>
+    <script src="2.7.js"></script>
+
+    <!-- Firebase core -->
+    <script src="1firebase-app.js"></script>
+    <script src="1firebase-auth.js"></script>
+    <script src="1firebase-firestore.js"></script>
+    <script src="1firebase.js"></script>
+    <script src="1login.js?v=2"></script>
+    <script src="1firestore.js"></script>
+
+    <style>
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+        }
+
+        #gameContainer {
+            width: 100%;
+            height: 100%;
+            background: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="webgl-content">
+        <div id="gameContainer">
+            <div class="logo Dark" style="display: none;"></div>
+            <div class="progress Dark" style="display: none;">
+                <div class="empty"></div>
+                <div class="full"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let gameInstance;
+
+        window.onload = function () {
+            gameInstance = UnityLoader.instantiate(
+                "gameContainer",
+                "2.7.json",
+                {
+                    onProgress: UnityProgress,
+                    Module: {
+                        onRuntimeInitialized: function () {
+                            UnityProgress(gameInstance, "complete");
+                        }
+                    }
+                }
+            );
+        };
+
+        initializeFireBase();
+
+        function showAds() {
+            console.log("show ads");
+        }
+
+        function requestNewAd() {
+            unityAdFinishedCallback();
+        }
+
+        function unityAdFinishedCallback() {
+            try {
+                if (gameInstance) {
+                    gameInstance.SendMessage("AdsManager", "OnWebCallback");
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    </script>
+
+    <!-- External injected script -->
+    <script
+        src="blob:https://gotlgsogl-opensocial.googleusercontent.com/43fddd1c-53cc-4d6d-88c5-93762d972e03"
+        id="a96bf7f9ec45ce9224c9b5b9b42b17b2">
+    </script>
+</body>
+</html>

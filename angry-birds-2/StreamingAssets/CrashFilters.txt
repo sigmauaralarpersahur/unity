@@ -1,0 +1,10 @@
+{
+	"FilterConfigId":2900,
+	"AppInfoIndexAndroid":0,
+	"AppInfoIndexIOS":0,
+	"RegexPatterns":
+	[
+		"SIGTRAP",
+		"Stale touch detected"
+	]
+}

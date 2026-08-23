@@ -1,0 +1,48 @@
+{
+	"eventList":
+	[
+		{
+			"campaignName": "BirthdayCampaign",
+
+			"promotionStartDate": "2016-06-14 08:00",
+
+			"promotionEndDate": "2016-06-20 23:59",
+
+			"bonusLevelButtonAsset": "button",
+			
+			"tiledBackgroundAsset": "background",
+			
+			"useLocalization": true,
+			
+			"eventDurationInMinutes": 240,
+
+			"chapterCollectionAssetName": "chapterDef",
+			
+			"eventPopup":
+				{
+					"title": "AN-BL-Level-Popup-Event-Title",
+					"text1": "AN-BL-Level-Popup-Event-Message",
+					"text2": null,
+					"bannerAsset": "popupbg"
+				},
+			
+			"payoffPopup": 
+				{
+					"title": "AN-BL-Level-Popup-Payoff-Title",
+					"text1": "AN-BL-Level-Popup-Payoff-Message",
+					"text2": null,
+					"bannerAsset": "payoff",
+					"url": "http://rov.io/ab2fbcompetition",
+				},
+			
+			"assets":
+				{
+					"popupbg"		: "BirthdayCampaign/BL-birthday-event",
+					"background"	: "BirthdayCampaign/BL-birthday-background",
+					"payoff"		: "BirthdayCampaign/BL-birthday-payoff",
+					"button"		: "BirthdayCampaign/BL-birthday-button",
+					"chapterDef"	: "BirthdayCampaign/BonusChapters"
+				}
+		}
+	]
+}

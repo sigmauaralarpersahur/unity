@@ -1,0 +1,1303 @@
+{
+	"ArenaRewards": 
+		[
+			[
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 300
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 80
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 150
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 75
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 50
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 25
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 10
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 5
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				}
+			],
+			[
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 300
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 100
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 150
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 50
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 75
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 10
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 50
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 25
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 10
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 5
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				}
+			],
+			[
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 300
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 120
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 150
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 50
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 75
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 25
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 50
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 10
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 25
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 10
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 5
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				}
+			],
+			[
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 300
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 140
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 150
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 75
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 75
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 50
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 50
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 25
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 25
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 10
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 10
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 5
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				}
+			],
+			[
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 300
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 160
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 150
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 100
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 75
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 75
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 50
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 50
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 25
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 25
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 10
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 10
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 5
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				}
+			],
+			[
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 300
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 180
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 150
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 150
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 75
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 100
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 50
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 75
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 25
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 50
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 10
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 25
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 5
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 10
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				}
+			],
+			[
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 300
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 220
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 150
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 180
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 75
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 150
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 50
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 100
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 25
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 75
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 10
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 50
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 5
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 25
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 10
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				}
+			],
+			[
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 300
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 300
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 150
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 200
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 75
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 180
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 50
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 150
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 25
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 100
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 10
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 75
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 5
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 50
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 25
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							},
+							{
+								"RewardKey": "Key-BlackPearls",
+								"Amount": 10
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				},
+				{
+					"Rewards": 
+						[
+							{
+								"RewardKey": "Key-Gems",
+								"Amount": 0
+							}
+						]
+				}
+			]
+		],
+	"CardToLeagueLevel": 
+		[
+			"Vanilla",
+			"Bronze",
+			"Silver",
+			"Gold",
+			"Blue",
+			"Green",
+			"Purple",
+			"Diamond"
+		],
+	"MinutesBetweenTickets": 180,
+	"TicketsPerDay": 0,
+	"MinRoomScore": 55000,
+	"MaxRoomScore": 65000,
+	"MaxBadThrowScore": 16000,
+	"ChanceOfBadThrow": 0.2,
+	"DestructionScorePerDestructible": 1000,
+	"PvPMatchmakingFunction": "pvp_inv",
+	
+	"ArenaLevelConfig": 
+		{
+			"PigList": "Randomize/PigLists/PigList_Chapter01.txt",
+			
+			"NumberOfTNTs": 0,
+			
+			"LevelsPerDay": 20,
+			
+			"RoomsPerRun": 15
+		}
+}

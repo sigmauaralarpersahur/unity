@@ -1,0 +1,131 @@
+{
+	"LoadingTips": 
+		[
+			{
+				"LoadingTipId": "Loading-Tip1",
+				"GreaterThan": false,
+				"LessThan": true,
+				"LevelNummer": 35,
+				"PreformatingID": "ArenaUnlockLevel"
+			},
+			{
+				"LoadingTipId": "Loading-Tip2",
+				"GreaterThan": false,
+				"LessThan": false,
+				"LevelNummer": 0,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Loading-Tip3",
+				"GreaterThan": true,
+				"LessThan": false,
+				"LevelNummer": 50,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Loading-Tip4",
+				"GreaterThan": false,
+				"LessThan": false,
+				"LevelNummer": 0,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Loading-Tip5",
+				"GreaterThan": true,
+				"LessThan": false,
+				"LevelNummer": 4,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Loading-Tip6",
+				"GreaterThan": true,
+				"LessThan": false,
+				"LevelNummer": 2,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Loading-Tip7",
+				"GreaterThan": true,
+				"LessThan": false,
+				"LevelNummer": 36,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Loading-Tip8",
+				"GreaterThan": true,
+				"LessThan": false,
+				"LevelNummer": 5,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Loading-Tip9",
+				"GreaterThan": true,
+				"LessThan": false,
+				"LevelNummer": 44,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Loading-Tip10",
+				"GreaterThan": false,
+				"LessThan": false,
+				"LevelNummer": 0,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Loading-Tip11",
+				"GreaterThan": false,
+				"LessThan": true,
+				"LevelNummer": 16,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Loading-Tip12",
+				"GreaterThan": true,
+				"LessThan": false,
+				"LevelNummer": 11,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Loading-Tip13",
+				"GreaterThan": false,
+				"LessThan": false,
+				"LevelNummer": 0,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Loading-Tip14",
+				"GreaterThan": false,
+				"LessThan": false,
+				"LevelNummer": 0,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Loading-Tip15",
+				"GreaterThan": false,
+				"LessThan": false,
+				"LevelNummer": 0,
+				"PreformatingID": "CardLevelHint"
+			},
+			{
+				"LoadingTipId": "Loading-Tip16",
+				"GreaterThan": true,
+				"LessThan": false,
+				"LevelNummer": 18,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Daily-Pro-Challenge-Advisor-Tip1",
+				"GreaterThan": true,
+				"LessThan": false,
+				"LevelNummer": 18,
+				"PreformatingID": "None"
+			},
+			{
+				"LoadingTipId": "Daily-Pro-Challenge-Advisor-Tip2",
+				"GreaterThan": true,
+				"LessThan": false,
+				"LevelNummer": 18,
+				"PreformatingID": "None"
+			}
+		]
+}
