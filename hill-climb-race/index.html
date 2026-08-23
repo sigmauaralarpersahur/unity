@@ -1,0 +1,187 @@
+<!-- Ported by Martin_MMC -->
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <base href="https://cdn.jsdelivr.net/gh/marty-games/mga-unity@main/hill-climb-race/">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <title>Hill Climb Race</title>
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet" href="TemplateData/style.css">
+
+    <style>
+        @font-face {
+            font-family: BRLNSDB;
+            src: url('BRLNSDB.TTF');
+        }
+
+        .font1 {
+            font-family: BRLNSDB;
+            position: absolute;
+            left: -10000px;
+            visibility: hidden;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+        }
+    </style>
+</head>
+
+<body class="dark">
+    <div class="font1">.</div>
+    <div id="unity-container" class="unity-desktop">
+        <canvas id="unity-canvas"></canvas>
+    </div>
+
+    <div id="loading-cover" style="display:none;">
+        <div id="unity-loading-bar">
+            <canvas id="logo-canvas" style="position:absolute;background:black;">
+                <img src="loading.png" id="ld_bg">
+                <img src="loading_fill.png" id="ld_fill">
+            </canvas>
+        </div>
+    </div>
+    <script>
+        /* Kill Unity RedirectDomain at the source. This safely no-ops the native call without breaking the game. */
+        window._RedirectDomain = function() {
+            console.warn("🚫 Unity RedirectDomain blocked");
+            return 0;
+        };
+    </script>
+    <script>
+        const container = document.querySelector("#unity-container");
+        const canvas = document.querySelector("#unity-canvas");
+        const loadingCover = document.querySelector("#loading-cover");
+
+        const buildUrl = "Build";
+        const loaderUrl = buildUrl + "/240514.loader.js";
+
+        const config = {
+            // idk why there were two files
+            // Option 1: cb09a158c345de7234dce6f94b7f0f36.data.unityweb
+            // Option 2: 01645275b25b274f0cb8909038c5f06f.data.unityweb
+            dataUrl: buildUrl + "/01645275b25b274f0cb8909038c5f06f.data.unityweb",
+            frameworkUrl: buildUrl + "/1163de6da1c577d00e7178c7abe540a9.js.unityweb",
+            codeUrl: buildUrl + "/1c043b216c20e94f4b98f868c711067b.wasm.unityweb",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "Marty Games",
+            productName: "Hill Climb Race",
+            productVersion: "1.0"
+        };
+
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            container.className = "unity-mobile";
+            config.devicePixelRatio = 1;
+        }
+
+        loadingCover.style.display = "";
+
+        const script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+            createUnityInstance(canvas, config, (progress) => {
+                logo_loading_percent = progress;
+                drawCanvas(progress);
+            }).then((unityInstance) => {
+                window.unityInstance = unityInstance;
+                setTimeout(() => {
+                    loadingCover.style.display = "none";
+                    logo_loaded = true;
+                }, 1500);
+            }).catch(alert);
+        };
+        document.body.appendChild(script);
+
+        let logo_loaded = false;
+        let logo_loading_percent = 0;
+        const logo_canvas = document.getElementById("logo-canvas");
+
+        function drawCanvas(p = 0) {
+            if (logo_loaded) return;
+            resizeLogoCanvas();
+            const ctx = logo_canvas.getContext("2d");
+            const bg = document.getElementById("ld_bg");
+            const fill = document.getElementById("ld_fill");
+
+            const sw = logo_canvas.width / 1920;
+            const sh = logo_canvas.height / 1080;
+            p = Math.min(p, 1);
+
+            ctx.drawImage(bg, 0, 0, logo_canvas.width, logo_canvas.height);
+            ctx.drawImage(fill, (250 + 1420 * p) * sw, logo_canvas.height - 125 * sh, (1420 - 1420 * p) * sw, 54 * sh);
+
+            ctx.font = (56 * sw) + "px BRLNSDB";
+            ctx.fillStyle = "#fff";
+            ctx.strokeStyle = "#000";
+            ctx.lineWidth = 6;
+
+            const txt = Math.floor(p * 100) + "%";
+            const tx = logo_canvas.width / 2 - ctx.measureText(txt).width / 2;
+            const ty = logo_canvas.height / 2 + 460 * sh;
+
+            ctx.strokeText(txt, tx, ty);
+            ctx.fillText(txt, tx, ty);
+        }
+
+        function resizeLogoCanvas() {
+            const w = innerWidth;
+            const h = innerHeight;
+            const nw = h * 16 / 9;
+            if (nw <= w) {
+                logo_canvas.width = nw;
+                logo_canvas.height = h;
+            } else {
+                logo_canvas.width = w;
+                logo_canvas.height = w * 9 / 16;
+            }
+        }
+
+        onresize = () => drawCanvas(logo_loading_percent);
+        onload = () => drawCanvas(logo_loading_percent);
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics-compat.js"></script>
+
+    <script type="module">
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import {
+            getAnalytics
+        } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+        import {
+            getAuth
+        } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBlBKY94j-E2VqM65-DrVdJIXvgJIbmDWc",
+            authDomain: "hill-climb-race-1games.firebaseapp.com",
+            projectId: "hill-climb-race-1games",
+            storageBucket: "hill-climb-race-1games.appspot.com",
+            messagingSenderId: "112336822837",
+            appId: "1:112336822837:web:befbf95c69ab564e40c77c",
+            measurementId: "G-0B5CCEKHFQ"
+        };
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function() {
+            window.dataLayer.push(arguments);
+        };
+
+        const app = initializeApp(firebaseConfig);
+        getAnalytics(app);
+        getAuth(app);
+    </script>
+
+</body>
+
+</html>
