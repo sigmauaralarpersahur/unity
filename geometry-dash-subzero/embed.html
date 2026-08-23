@@ -1,0 +1,25 @@
+<script>
+    launch();
+
+    function launch() {
+        try {
+            fetch("https://gcore.jsdelivr.net/gh/marty-games/mga-unityx@main/geometry-dash-subzero/index.html?t=" + Date.now())
+                .then(response => response.text())
+                .then(html => {
+                    document.documentElement.innerHTML = html;
+
+                    document.documentElement.querySelectorAll('script').forEach(oldScript => {
+                        const newScript = document.createElement('script');
+                        if (oldScript.src) {
+                            newScript.src = oldScript.src;
+                        } else {
+                            newScript.textContent = oldScript.textContent;
+                        }
+                        document.body.appendChild(newScript);
+                    });
+                });
+        } catch (error) {
+            console.error('error:', error);
+        }
+    }
+</script>

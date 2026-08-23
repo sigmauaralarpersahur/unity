@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <base href="https://gcore.jsdelivr.net/gh/marty-games/mga-unityx@main/getting-over-it/">
+    <meta charset="utf-8">
+    <title>Getting Over It</title>
+
+    <style>
+        /* background */
+        #bg-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: -2;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* loader UI */
+        #loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 22px;
+            z-index: 2;
+        }
+
+        #title {
+            font-size: 3em;
+            font-weight: bold;
+            text-shadow:
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff,
+                0 0 30px #0ff;
+        }
+
+        #progress-bar {
+            width: min(90vw, 420px);
+            height: 12px;
+            background: #111;
+            border-radius: 10px;
+            overflow: visible;
+            box-shadow: 0 0 3px #0ff, 0 0 8px rgba(0, 255, 255, .4);
+        }
+
+        #progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #0ff;
+            border-radius: 10px;
+            box-shadow: 0 0 4px #0ff, 0 0 10px rgba(0, 255, 255, .6);
+            transition: width .25s;
+        }
+
+        #loading-text {
+            font-size: 18px;
+            text-shadow: 0 0 4px #fff, 0 0 8px #fff;
+        }
+
+        /* unity */
+        #unity-container {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        #unity-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div id="loader">
+        <div id="title">Getting Over It</div>
+
+        <div id="progress-bar">
+            <div id="progress-fill"></div>
+        </div>
+
+        <div id="loading-text">Preparing files...</div>
+    </div>
+
+    <div id="unity-container">
+        <canvas id="unity-canvas"></canvas>
+    </div>
+
+    <script>
+        /* PARTICLE BACKGROUND */
+        const canvasBG = document.getElementById("bg-canvas");
+        const ctx = canvasBG.getContext("2d");
+
+        const MAX_PARTICLES = 50;
+        const MAX_DISTANCE = 100;
+        const COLORS = ['#0ff', '#ff0', '#f0f', '#0f0'];
+
+        let particles = [];
+
+        function initBG() {
+            canvasBG.width = window.innerWidth;
+            canvasBG.height = window.innerHeight;
+
+            particles = [];
+
+            for (let i = 0; i < MAX_PARTICLES; i++) {
+                particles.push({
+                    x: Math.random() * canvasBG.width,
+                    y: Math.random() * canvasBG.height,
+                    size: Math.random() * 3 + 1,
+                    speedX: (Math.random() - 0.5),
+                    speedY: (Math.random() - 0.5),
+                    color: COLORS[Math.floor(Math.random() * COLORS.length)]
+                });
+            }
+        }
+
+        function drawLines() {
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a + 1; b < particles.length; b++) {
+                    let dx = particles[a].x - particles[b].x;
+                    let dy = particles[a].y - particles[b].y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < MAX_DISTANCE) {
+                        ctx.strokeStyle = `rgba(0,255,255,${0.5 - dist / 200})`;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateBG() {
+            ctx.clearRect(0, 0, canvasBG.width, canvasBG.height);
+
+            particles.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+
+                if (p.x < 0 || p.x > canvasBG.width) p.speedX *= -1;
+                if (p.y < 0 || p.y > canvasBG.height) p.speedY *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.shadowColor = p.color;
+                ctx.shadowBlur = 8;
+                ctx.fill();
+            });
+
+            drawLines();
+            requestAnimationFrame(animateBG);
+        }
+
+        window.addEventListener("resize", initBG);
+        initBG();
+        animateBG();
+
+        /* LOADER LOGIC (UNCHANGED CORE) */
+        const loadingText = document.getElementById("loading-text");
+        const progressFill = document.getElementById("progress-fill");
+
+        let totalBytes = 691732588;
+        let loadedBytes = 0;
+
+        function formatSize(bytes) {
+            return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+        }
+
+        async function fetchWithProgress(url) {
+            const response = await fetch(url);
+            const reader = response.body.getReader();
+
+            let chunks = [];
+            let received = 0;
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                received += value.length;
+                loadedBytes += value.length;
+
+                chunks.push(value);
+
+                let percent = (loadedBytes / totalBytes) * 100;
+
+                progressFill.style.width = percent + "%";
+                loadingText.textContent =
+                    `Loading ${formatSize(loadedBytes)} / ${formatSize(totalBytes)} (${percent.toFixed(0)}%)`;
+            }
+
+            let buffer = new Uint8Array(received);
+            let offset = 0;
+
+            for (let chunk of chunks) {
+                buffer.set(chunk, offset);
+                offset += chunk.length;
+            }
+
+            return buffer.buffer;
+        }
+
+        function getParts(file, count) {
+            let parts = [];
+            for (let i = 1; i <= count; i++) {
+                parts.push(file + ".part" + i);
+            }
+            return parts;
+        }
+
+        async function mergeFiles(parts) {
+            const buffers = await Promise.all(parts.map(fetchWithProgress));
+            return URL.createObjectURL(new Blob(buffers));
+        }
+
+        /* UNITY START */
+        (async () => {
+
+            const dataParts = getParts("Build/GettingOverIt.data", 32);
+            const wasmParts = getParts("Build/GettingOverIt.wasm", 2);
+
+            const [dataUrl, wasmUrl] = await Promise.all([
+                mergeFiles(dataParts),
+                mergeFiles(wasmParts)
+            ]);
+
+            const canvas = document.getElementById("unity-canvas");
+
+            const config = {
+                dataUrl,
+                frameworkUrl: "Build/GettingOverIt.framework.js",
+                codeUrl: wasmUrl,
+                streamingAssetsUrl: "StreamingAssets",
+                companyName: "Bennett Foddy",
+                productName: "Getting Over It",
+                productVersion: "1.7"
+            };
+
+            const script = document.createElement("script");
+            script.src = "Build/GettingOverIt.loader.js";
+
+            script.onload = () => {
+                createUnityInstance(canvas, config, (progress) => {
+                    progressFill.style.width = (progress * 100) + "%";
+                }).then(() => {
+
+                    document.getElementById("loader").style.display = "none";
+                    document.getElementById("bg-canvas").style.display = "none";
+                    document.getElementById("unity-container").style.display = "block";
+
+                });
+            };
+
+            document.body.appendChild(script);
+
+        })();
+    </script>
+
+</body>
+</html>

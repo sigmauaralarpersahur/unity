@@ -1,0 +1,165 @@
+<!-- Ported by Martin_MMC :D -->
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <base href="https://gcore.jsdelivr.net/gh/marty-games/mga-unityx@main/geometry-world/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="theme/game.css">
+    <title>Geometry World</title>
+    <link rel="canonical" href="https://marty-games.github.io/" data-react-helmet="true">
+    <style type="text/css">
+        .jss1:before {
+            top: 0;
+            width: 100%;
+            filter: blur(16px);
+            height: 100%;
+            content: "";
+            display: block;
+            opacity: .5;
+            z-index: 0;
+            position: absolute;
+            background-size: cover;
+            background-image: url("loading.png")
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="unity-container" style="display: none;">
+        <canvas id="unity-canvas"></canvas>
+    </div>
+    <div id="loadingBlock">
+        <div class="jss31 jss34 jss1">
+            <div class="spinner"></div>
+
+            <div class="jss31 jss34 jss48" style="flex: 1 1 0%;">
+                <div class="jss32">
+                    <div class="jss7 jss9 jss20 jss3">
+                        <div class="jss125">
+                            <div class="jss123"></div>
+                            <img id="game-logo" src="logo.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="jss31 jss34" style="flex: 3 1 0%;">
+                <div class="jss32">
+                    <div class="jss31 jss34 jss39 jss50 gameloader">
+                        <div class="jss32">
+                            <div class="gameloader-game-name">Geometry World</div>
+                        </div>
+                        <div class="jss32 gameloader-logo">
+                            <img src="loading.png" />
+                        </div>
+                        <div class="jss32">
+                            <div class="gameloader-progressbar">
+                                <div class="gameloader-progressbar-progress" id="progress_fill" style="width: 0%;"></div>
+                            </div>
+                            <div class="gameloader-progress-info">Loading Game...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"2b96e6c69cb44200a90fd32a8c45cada","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+<script>
+    //var buildUrl = "Build";
+    var buildUrl = "Build";
+    var loaderUrl = buildUrl + "/geometry-world.loader.js";
+    var config = {
+        dataUrl: buildUrl + "/geometry-world.data.unityweb",
+        frameworkUrl: buildUrl + "/geometry-world.framework.js.unityweb",
+        codeUrl: buildUrl + "/geometry-world.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Marty Games",
+        productName: "Geometry World",
+        productVersion: "2.9",
+    };
+
+    var progressElement = document.getElementById('progress_fill');
+    var container = document.getElementById("unity-container");
+    var canvas = document.getElementById("unity-canvas");
+    var loadingBar = document.querySelector("#loadingBlock");
+    var progressBarFull = document.querySelector("#progress_fill");
+    var progress_text = document.querySelector(".gameloader-progress-info");
+    let text_percent = "";
+
+
+
+
+    var script = document.createElement("script");
+    script.src = loaderUrl;
+    script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+            progressElement.style.width = 100 * progress + "%";
+            text_percent = "Downloading file: " + Math.round(progress * 100) + "%";
+            progress_text.innerText = text_percent;
+            if (progress >= 99) {
+                progress_text.innerText = "Loading Game...";
+            }
+        }).then((unityInstance) => {
+            window.unityInstance = unityInstance;
+            setTimeout(function() {
+                loadingBar.style.display = "none";
+            }, 2000);
+            container.style.display = "block";
+        }).catch((message) => {
+            alert(message);
+        });
+    };
+    document.body.appendChild(script);
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics-compat.js"></script>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import {
+        initializeApp
+    } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import {
+        getAnalytics
+    } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+    import {
+        getAuth
+    } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyAEzbEgcevkESHs5MYxGkXZuaHvHY6ySK0",
+        authDomain: "geometry-world-eabca.firebaseapp.com",
+        projectId: "geometry-world-eabca",
+        storageBucket: "geometry-world-eabca.appspot.com",
+        messagingSenderId: "916052718595",
+        appId: "1:916052718595:web:ddb8a92718fec5f30fca36",
+        measurementId: "G-5TQBT0RN6F"
+    };
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function() {
+        window.dataLayer.push(arguments);
+    }
+
+    window.gtag("config", firebaseConfig.measurementId, {
+        cookie_domain: window.location.hostname,
+        cookie_flags: "SameSite=None;Secure",
+    });
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+</script>
+<script src="https://gcore.jsdelivr.net/gh/marty-games/shared@main/sitelock.js"></script>
+
+</html>
