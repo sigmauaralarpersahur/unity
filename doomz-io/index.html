@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base href="https://gcore.jsdelivr.net/gh/marty-games/mga-unityx@main/doomz-io/">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Doomz.io</title>
+    <style>
+        :root {
+            --bg: #0b0d12;
+            --accent: #7c5cff;
+            --accent2: #4da3ff;
+            --text: rgba(255, 255, 255, .92);
+            --muted: rgba(255, 255, 255, .66);
+            --muted2: rgba(255, 255, 255, .54);
+            --border: rgba(255, 255, 255, .16);
+            --shadow: 0 18px 45px rgba(0, 0, 0, .48);
+            --radius: 18px;
+            --glassA: rgba(18, 16, 30, .56);
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: var(--bg);
+            overflow: hidden;
+            color: var(--text);
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, sans-serif;
+        }
+
+        #unityContainer {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="unityContainer"></div>
+
+    <!-- IMPORTANT: cache-bust -->
+    <script src="chat_sanitize.js?v=2026-02-27-1"></script>
+
+    <!-- Unity loader -->
+    <script src="doomz.js"></script>
+
+    <script>
+        // ---- Enter-game detection (kept from original) ----
+        window.__doomzEnterArmed = false;
+
+        function armEnter(reason) {
+            if (window.__doomzEnterArmed) return;
+            window.__doomzEnterArmed = true;
+        }
+
+        setTimeout(() => armEnter("timer"), 4800);
+        window.addEventListener("keydown", () => armEnter("keydown"), {
+            once: true
+        });
+        window.addEventListener("mousedown", () => armEnter("mousedown"), {
+            once: true
+        });
+        window.addEventListener("touchstart", () => armEnter("touchstart"), {
+            once: true
+        });
+
+        window.addEventListener("doomz:enteredGame", () => {
+            if (!window.__doomzEnterArmed) return;
+        });
+
+        // Start Unity
+        UnityLoader.instantiate("unityContainer", "doomz.json", {});
+    </script>
+</body>
+
+</html>
