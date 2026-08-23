@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <base href="https://gcore.jsdelivr.net/gh/marty-games/mga-unityx@main/raft/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raft</title>
+
+    <style>
+        /* background canvas */
+
+        #bg-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: -2;
+        }
+
+        /* page */
+
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* loader */
+
+        #loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 22px;
+            z-index: 2;
+        }
+
+        #title {
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+            text-shadow:
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff,
+                0 0 30px #0ff;
+        }
+
+        /* progress bar */
+
+        #progress-bar {
+            width: 420px;
+            height: 12px;
+            background: #111;
+            border-radius: 10px;
+            overflow: visible;
+            box-shadow: 0 0 3px #0ff, 0 0 8px rgba(0, 255, 255, .4);
+        }
+
+        #progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #0ff;
+            border-radius: 10px;
+            box-shadow: 0 0 4px #0ff, 0 0 10px rgba(0, 255, 255, .6);
+            transition: width .25s;
+        }
+
+        #loading-text {
+            font-size: 18px;
+            text-shadow: 0 0 4px #fff, 0 0 8px #fff;
+        }
+
+        /* unity */
+
+        #unityContainer {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+    </style>
+
+    <script src="Build/UnityLoader.js"></script>
+
+</head>
+
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div id="loader">
+
+        <div id="title">Raft</div>
+
+        <div id="progress-bar">
+            <div id="progress-fill"></div>
+        </div>
+
+        <div id="loading-text">Preparing files...</div>
+
+    </div>
+
+    <div id="unityContainer"></div>
+
+    <script>
+        /* particle background */
+
+        const canvasBG = document.getElementById("bg-canvas");
+        const ctx = canvasBG.getContext("2d");
+
+        const MAX_PARTICLES = 50;
+        const MAX_DISTANCE = 100;
+
+        let particles = [];
+        let animationId;
+
+        function initBackground() {
+
+            canvasBG.width = window.innerWidth;
+            canvasBG.height = window.innerHeight;
+
+            particles = [];
+
+            for (let i = 0; i < MAX_PARTICLES; i++) {
+
+                particles.push({
+                    x: Math.random() * canvasBG.width,
+                    y: Math.random() * canvasBG.height,
+                    size: Math.random() * 3 + 1,
+                    speedX: (Math.random() - .5) * 1.2,
+                    speedY: (Math.random() - .5) * 1.2
+                });
+
+            }
+
+        }
+
+        function drawConnections() {
+
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a + 1; b < particles.length; b++) {
+
+                    const dx = particles[a].x - particles[b].x;
+                    const dy = particles[a].y - particles[b].y;
+
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < MAX_DISTANCE) {
+
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0,255,255,${0.5-distance/(2*MAX_DISTANCE)})`;
+                        ctx.lineWidth = 1;
+
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+
+                        ctx.stroke();
+
+                    }
+
+                }
+            }
+
+        }
+
+        function animateBackground() {
+
+            ctx.clearRect(0, 0, canvasBG.width, canvasBG.height);
+
+            particles.forEach(p => {
+
+                p.x += p.speedX;
+                p.y += p.speedY;
+
+                if (p.x < 0 || p.x > canvasBG.width) p.speedX *= -1;
+                if (p.y < 0 || p.y > canvasBG.height) p.speedY *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = "#0ff";
+                ctx.shadowColor = "#0ff";
+                ctx.shadowBlur = 8;
+                ctx.fill();
+
+            });
+
+            drawConnections();
+
+            animationId = requestAnimationFrame(animateBackground);
+
+        }
+
+        window.addEventListener("resize", initBackground);
+
+        initBackground();
+        animateBackground();
+
+
+        /* unity loader logic */
+
+        let max = 0;
+        let done = 0;
+
+        const loadingText = document.querySelector("#loading-text");
+        const progressFill = document.querySelector("#progress-fill");
+
+        function mergeFiles(fileParts) {
+
+            return new Promise((resolve, reject) => {
+
+                let buffers = [];
+
+                function fetchPart(index) {
+
+                    if (index >= fileParts.length) {
+
+                        let mergedBlob = new Blob(buffers);
+                        let mergedFileUrl = URL.createObjectURL(mergedBlob);
+
+                        resolve(mergedFileUrl);
+                        return;
+
+                    }
+
+                    fetch(fileParts[index])
+                        .then(r => r.arrayBuffer())
+                        .then(data => {
+
+                            buffers.push(data);
+
+                            done++;
+
+                            let percent = (done / max) * 100;
+
+                            progressFill.style.width = percent + "%";
+
+                            loadingText.textContent = `Loading files (${done}/${max})`;
+
+                            fetchPart(index + 1);
+
+                        })
+                        .catch(reject);
+
+                }
+
+                fetchPart(0);
+
+            });
+
+        }
+
+        UnityLoader.downloadJob = function(e, t) {
+
+            var r = new XMLHttpRequest;
+
+            if (t.parameters.url.startsWith("Build/blob")) {
+                r.open("GET", t.parameters.url.replace("Build/", ""));
+            } else {
+                r.open("GET", t.parameters.url);
+            }
+
+            r.responseType = "arraybuffer";
+
+            r.onload = function() {
+
+                UnityLoader.Compression.decompress(new Uint8Array(r.response), function(e) {
+                    t.complete(e);
+                });
+
+            };
+
+            t.parameters.onprogress && r.addEventListener("progress", t.parameters.onprogress);
+            t.parameters.onload && r.addEventListener("load", t.parameters.onload);
+
+            r.send();
+
+        };
+
+        function getParts(file, start, end) {
+
+            let parts = [];
+
+            for (let i = start; i <= end; i++) {
+                parts.push(file + ".part" + i);
+            }
+
+            max = max + end;
+
+            return parts;
+
+        }
+
+        function resizeUnityContainer() {
+
+            var container = document.getElementById("unityContainer");
+
+            container.style.width = window.innerWidth + "px";
+            container.style.height = window.innerHeight + "px";
+
+        }
+
+        Promise.all([
+
+            mergeFiles(getParts("Build/Raft-WEBGL.data.unityweb", 1, 3)),
+            mergeFiles(getParts("Build/Raft-WEBGL.asm.code.unityweb", 1, 2))
+
+        ]).then(([dataUrl, asmCode]) => {
+
+            var json = {
+                "TOTAL_MEMORY": 268435456,
+                "dataUrl": dataUrl,
+                "asmCodeUrl": asmCode,
+                "asmMemoryUrl": "Raft-WEBGL.asm.memory.unityweb",
+                "asmFrameworkUrl": "Raft-WEBGL.asm.framework.unityweb",
+                "splashScreenStyle": "Dark",
+                "backgroundColor": "#000000"
+            };
+
+            let blob = new Blob([JSON.stringify(json)], {
+                type: "application/json"
+            });
+            let blobUrl = URL.createObjectURL(blob);
+
+            window.addEventListener("resize", resizeUnityContainer);
+
+            UnityLoader.instantiate("unityContainer", json, {
+                url: blobUrl,
+                Module: {
+                    onRuntimeInitialized: function() {
+
+                        resizeUnityContainer();
+
+                        document.getElementById("loader").style.display = "none";
+
+                        cancelAnimationFrame(animationId);
+                        document.getElementById("bg-canvas").style.display = "none";
+
+                        document.getElementById("unityContainer").style.display = "block";
+
+                    }
+                }
+
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
