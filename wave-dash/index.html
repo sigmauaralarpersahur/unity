@@ -1,0 +1,206 @@
+<!-- Ported by Martin_MMC -->
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <base href="https://gcore.jsdelivr.net/gh/marty-games/mga-unityx@main/wave-dash/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <title>Wave Dash</title>
+    <meta name="description" content="Ride the waves and dodge dangerous obstacles in Wave Dash! Perform epic tricks and dash the farthest as you race to become the ultimate wave master.">
+    <link rel="stylesheet" href="25051502/theme/game.css">
+
+    <style>
+        .jss1::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("25051502/loading.png");
+            background-size: cover;
+            filter: blur(16px);
+            opacity: 0.5;
+            z-index: 0;
+        }
+    </style>
+
+    <!-- UNITY CONFIG -->
+    <script>
+        const versionFolder = "25051502/";
+        const buildBaseUrl =
+            "https://cdn.jsdelivr.net/gh/marty-games/mga-unity@main/wave-dash/" + versionFolder + "Build";
+
+        const loaderUrl = buildBaseUrl + "/wave-dash-v25051502.loader.js";
+
+        const config = {
+            dataUrl: buildBaseUrl + "/wave-dash-v25051502.data.unityweb",
+            frameworkUrl: buildBaseUrl + "/wave-dash-v25051502.framework.js.unityweb",
+            codeUrl: buildBaseUrl + "/wave-dash-v25051502.wasm.unityweb",
+            streamingAssetsUrl: versionFolder + "StreamingAssets",
+
+            companyName: "Marty Games",
+            productName: "Wave Dash",
+            productVersion: "25051502",
+            pubId: "",
+
+            hostindex: 2,
+            gameId: "wave-dash",
+            eventLog: true,
+            buildAPI: "https://event.azgame.io/apiaz/event",
+
+            enableMoreGame: "yes",
+            enablePromotion: false
+        };
+
+        // Disable event logging after expiration date
+        const now = new Date();
+        const endLogDate = new Date("2025-06-02T08:30:15.119Z");
+        if (now > endLogDate) config.eventLog = false;
+
+        // Check GameDistribution host
+        function isHostOnGD() {
+            const parts = window.location.hostname.split(".");
+            return parts.slice(-2).join(".") === "gamedistribution.com";
+        }
+
+        config.gdHost = isHostOnGD();
+        if (config.gdHost) {
+            config.enableMoreGame = "no";
+            config.enablePromotion = false;
+            config.eventLog = false;
+
+            const pathSegments = window.location.pathname.split("/");
+            config.gdGameId = pathSegments[1];
+        }
+    </script>
+
+    <!-- SITE LOCK -->
+    <script id="gmsoft-jssdk" src="https://gcore.jsdelivr.net/marty-games/shared@main/sitelock.js"></script>
+</head>
+
+<body>
+    <!-- UNITY CANVAS -->
+    <div id="unity-container" style="display:none;">
+        <canvas id="unity-canvas"></canvas>
+    </div>
+
+    <!-- LOADING SCREEN -->
+    <div id="loadingBlock">
+        <div class="jss31 jss34 jss1">
+            <div style="
+                    position:absolute;
+                    bottom:10px;
+                    right:10px;
+                    font-family:Arial, Helvetica, sans-serif;
+                    font-size:18px;
+                    color:#fff;
+                    opacity:0.5;
+                ">
+                Marty Games │ v25051502
+            </div>
+
+            <div class="spinner"></div>
+
+            <div class="jss31 jss34 jss48">
+                <div class="jss32">
+                    <div class="jss7 jss9 jss20 jss3">
+                        <img src="25051502/logo.png" alt="Wave Dash Logo">
+                    </div>
+                </div>
+            </div>
+
+            <div class="jss31 jss34">
+                <div class="jss32">
+                    <div class="gameloader">
+                        <div class="gameloader-game-name">Wave Dash</div>
+
+                        <div class="gameloader-logo">
+                            <img id="game-logo" src="25051502/loading.png" alt="Loading">
+                        </div>
+
+                        <div>
+                            <div class="gameloader-progressbar">
+                                <div id="progress_fill" class="gameloader-progressbar-progress" style="width:0%;"></div>
+                            </div>
+                            <div class="gameloader-progress-info">
+                                Game Loading...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UNITY LOADER -->
+    <script>
+        const container = document.getElementById("unity-container");
+        const canvas = document.getElementById("unity-canvas");
+        const loadingBar = document.getElementById("loadingBlock");
+        const progressFill = document.getElementById("progress_fill");
+        const progressText = document.querySelector(".gameloader-progress-info");
+
+        const unityScript = document.createElement("script");
+        unityScript.src = loaderUrl;
+
+        unityScript.onload = () => {
+            createUnityInstance(canvas, config, (progress) => {
+                    progressFill.style.width = progress * 100 + "%";
+                    progressText.innerText =
+                        progress < 0.99 ?
+                        `Downloading file: ${Math.round(progress * 100)}%` :
+                        "Game Loading ...";
+                })
+                .then((instance) => {
+                    window.unityInstance = instance;
+                    setTimeout(() => {
+                        loadingBar.style.display = "none";
+                        window.focus();
+                    }, 2000);
+                    container.style.display = "block";
+                })
+                .catch(alert);
+        };
+
+        document.body.appendChild(unityScript);
+    </script>
+
+    <!-- FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics-compat.js"></script>
+
+    <script type="module">
+        const firebaseConfig = {
+            apiKey: "AIzaSyAdomM132xPG0wfXzFI8w9r72bxrxW51p0",
+            authDomain: "wave-dash-1games.firebaseapp.com",
+            projectId: "wave-dash-1games",
+            storageBucket: "wave-dash-1games.firebasestorage.app",
+            messagingSenderId: "278404184991",
+            appId: "1:278404184991:web:ce6f24b9075cbc9c19dbaa",
+            measurementId: "G-MSH2WXEF6K"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+    <!-- EVENT LOGGING -->
+    <script>
+        function firebaseLogEvent(name, params) {
+            firebase.analytics().logEvent(name, params);
+        }
+
+        let timeCounter = 0;
+        setInterval(() => {
+            if (config.eventLog) {
+                firebaseLogEvent("time_countergm_" + timeCounter++);
+            }
+        }, 30000);
+    </script>
+</body>
+
+</html>

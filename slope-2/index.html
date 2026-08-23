@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base href="https://gcore.jsdelivr.net/gh/marty-games/mga-unityx@main/slope-2/">
+    <title>Slope 2</title>
+    <link rel="stylesheet" href="components/gameloader.css" />
+    <script src="components/gameloader.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body>
+    <script type="text/javascript">
+        var options = {
+            author: "Marty Games",
+            logo: "logo.jpg",
+            gameName: "Slope 2",
+            gameNameEu: "Slope 2",
+            gameUrl: "https://slope2.abcya.ga",
+            moreLink: ("https://slope2.abcya.ga"),
+            allowFullscreen: false,
+            locale: "en_US",
+            loader: "5.6.x",
+            loaderOptions: {
+                "moduleJsonUrl": "components/Slope 2.json",
+                "unityLoaderUrl": "components/UnityLoader.js"
+            },
+        };
+        GameInit.load(options);
+    </script>
+    <script language="JavaScript" type="text/javascript">
+        //<![CDATA[
+        window.onbeforeunload = function() {
+            return 'Are you sure you want to leave?';
+        };
+        //]]>
+    </script>
+</body>
+
+</html>
