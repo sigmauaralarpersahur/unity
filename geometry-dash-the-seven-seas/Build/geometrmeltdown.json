@@ -2,7 +2,7 @@
     "companyName": "Marty Games",
     "productName": "Geometry Dash The Seven Seas",
     "productVersion": "1.3",
-    "dataUrl": "https://raw.githack.com/marty-games/mga-unity/main/geometry-dash-the-seven-seas/Build/geometrmeltdown.data.unityweb",
+    "dataUrl": "https://raw.githack.com/sigmauaralarpersahur/unity/main/geometry-dash-the-seven-seas/Build/geometrmeltdown.data.unityweb",
     "wasmCodeUrl": "geometrmeltdown.wasm.code.unityweb",
     "wasmFrameworkUrl": "geometrmeltdown.wasm.framework.unityweb",
     "graphicsAPI": [
